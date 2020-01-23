@@ -1,0 +1,77 @@
+<h1>registration</h1>
+
+<div class="container">
+    <h2>Registeration Form !</h2>
+  <form class="form-horizontal" [formGroup]="userform" novalidate>
+   
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="username">Username:</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="name" placeholder="Username"> <br>
+    <div  class="alert alert-danger" *ngIf="userform.controls['name'].invalid && userform.controls['name'].touched">
+    <div *ngIf="userform.controls['name'].errors.required">Name is Required</div>
+    <div *ngIf="userform.controls['name'].errors.minlength">Name should be minimum of 3 letters</div>        
+    </div>
+    </div>
+    </div>
+  
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="pass">Password:</label> 
+    <div class="col-sm-8">
+    <input type="password" class="form-control" formControlName="pass" placeholder="Password"> <br>
+    <div class="alert alert-danger" *ngIf="userform.controls['pass'].invalid && userform.controls['pass'].touched">
+    <div *ngIf="userform.controls['pass'].errors.required">Password is Required</div>
+    <div *ngIf="userform.controls['pass'].errors.minlength">Password should be minimum of 8 letters</div>        
+    </div>
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-8"> 
+    <input type="text" class="form-control" formControlName="mail" placeholder="Email id"> <br>
+    <div class="alert alert-danger" *ngIf="userform.controls['mail'].invalid && userform.controls['mail'].touched">
+    <div *ngIf="userform.controls['mail'].errors.required">Email is Required</div>
+    <div *ngIf="userform.controls['mail'].errors.pattern">Email must be a valid email address</div>        
+    </div>
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="gender">Gender:</label>
+    <input type="radio" value="female" name="gender" formControlName="gender"> Female
+    <input type="radio" value="male" name="gender" formControlName="gender"> Male  <br>
+    </div>  
+
+    <div class="form-group">
+    <label  class="control-label col-sm-2" for="country">Country:</label>
+    <select formControlName="country">
+    <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+    </select><br>
+    </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="mobile">Mobile:</label> 
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="mobile" placeholder="mobile number"> 
+    <div class="alert alert-danger" *ngIf="userform.controls['mobile'].invalid && userform.controls['mobile'].touched">
+    <div *ngIf="userform.controls['mobile'].errors.required">Mobile number is Required</div>
+    </div> 
+    </div>
+    </div>
+    
+         <button type="submit" (click)="adddata()" value="Submit"  [disabled]="userform.invalid">Submit</button>
+    
+  </form>
+  
+  <div style="padding-left: 500px">
+<button><a [routerLink]="['/login']">login</a></button>
+</div>
+    <br>
+    {{userform.value|json}}
+    <br>
+</div>
+
+
+
+

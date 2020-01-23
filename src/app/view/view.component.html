@@ -1,0 +1,81 @@
+<div class="container">
+ 
+  <h2>View Drive Data</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th width="50">Drive id</th> 
+        <th item-width="200"> CompanyName</th>
+        <th item-width="200">No_Of_Resources</th>
+        <th item-width="200"> Experience</th>
+        <th item-width="200">CTC</th>
+        <th item-width="200">JoiningCriteria </th>
+        <th item-width="200">Bond</th>
+        <th item-width="200"> Position</th>
+        <th item-width="300"> folloW Up</th>
+        <th item-width="200">Education</th>
+        <th item-width="2000">Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let e of data;let i=index">
+      
+      <tr *ngIf="e">
+          <td>{{e.did}}</td>  
+        <td>{{e.cmpname}}</td>
+        <td>{{e.noofres}}</td>
+        <td>{{e.expreq}}</td>
+        <td>{{e.ctc}}</td>
+      <td>
+          <div [ngSwitch]=e.joincrt>
+          <div *ngSwitchCase="'0'">
+            No training and direct joining
+          </div>
+          <div *ngSwitchCase="'1'">
+          3 Months internship and then joining
+          </div>
+         </div> 
+        </td>
+        <td>
+<div [ngSwitch]=e.bond>
+  <div *ngSwitchCase="'0.0'"> 1 year</div>
+  <div *ngSwitchCase="'1.0'"> 2 year</div>
+
+</div>
+
+        </td>
+        <td>
+          <div [ngSwitch]=e.position>
+            <div *ngSwitchCase="'0'">
+              Full Stack Developer
+            </div>
+            <div *ngSwitchCase="'1'">
+              UI Developer
+            </div>
+            <div *ngSwitchCase="'2'">
+              Middleware & BackEnd
+            </div>
+            <div *ngSwitchCase="'3'">
+              Software Tester
+            </div>
+           </div> 
+        </td>
+        <td>{{e.followup }}</td>
+        <td>{{e.educrt}}
+          <div [ngSwitch]=e.educrt>
+            <div *ngSwitchCase="'0'">BE,Comp/It</div>
+            <div *ngSwitchCase="'1'"> BCA/MCA</div>
+            <div *ngSwitchCase="'2'">12th</div>
+            <div *ngSwitchCase="'3'">
+              Software Tester
+            </div>
+           </div> 
+        </td>
+        <td>
+          <button class="btn btn-success" (click)="edit(e)" (click)= "openDialog()">Edit</button> 
+          <button class="btn btn-danger" (click)="deleteData(e.did)">Delete</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
