@@ -1,0 +1,15 @@
+<h1 style="color: indigo; text-align: center;font-weight: bold;">Welcome </h1>
+<h2 style="text-align: center;color:rgb(68, 233, 18);font-weight: bold;">Student DriveTracker System</h2>
+
+<div style="padding:5px">
+    <ul class="nav nav-tabs">
+
+
+        <li routerLinkActive="active"><a routerLink="create">CREATE</a> </li>
+        <li routerLinkActive="active"><a routerLink="view">VIEW</a> </li>
+
+    </ul>
+    <button (click)=logout() >LogOut</button>
+    <router-outlet></router-outlet>
+</div>
+
